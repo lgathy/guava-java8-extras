@@ -15,7 +15,7 @@ public class MultipleLinesConverter extends Converter<List<String>, String> impl
     
     private Object readResolve() { return INSTANCE; }
     
-    protected List<String> doBackward(String string) { return SPLITTER.splitToList(string); }
+    protected List<String> doBackward(String string) { return new ArrayList<>(SPLITTER.splitToList(string)); }
     
     protected String doForward(List<String> stringList) { return JOINER.join(stringList); }
     
