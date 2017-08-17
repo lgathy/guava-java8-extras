@@ -22,10 +22,15 @@ public interface GuavaCollectors {
         return guavaOptional.isPresent() ? java.util.Optional.of(guavaOptional.get()) : java.util.Optional.empty();
     }
     
+    /**
+     * @deprecated Since guava:21.0 user {@link ImmutableList#toImmutableList()}
+     */
+    @Deprecated
     static <T> Collector<T, ?, ImmutableList<T>> toImmutableList() {
         return (Collector) IMMUTABLE_LIST_COLLECTOR;
     }
     
+    @Deprecated
     Collector<Object, ImmutableList.Builder, ImmutableList> IMMUTABLE_LIST_COLLECTOR = Collector.of(
         ImmutableList::builder,
         ImmutableList.Builder::add,
@@ -33,10 +38,15 @@ public interface GuavaCollectors {
         ImmutableList.Builder::build
     );
     
+    /**
+     * @deprecated Since guava:21.0 user {@link ImmutableSet#toImmutableSet()}
+     */
+    @Deprecated
     static <T> Collector<T, ?, ImmutableSet<T>> toImmutableSet() {
         return (Collector) IMMUTABLE_SET_COLLECTOR;
     }
     
+    @Deprecated
     Collector<Object, ImmutableSet.Builder, ImmutableSet> IMMUTABLE_SET_COLLECTOR = Collector.of(
         ImmutableSet::builder,
         ImmutableSet.Builder::add,
@@ -45,10 +55,15 @@ public interface GuavaCollectors {
         UNORDERED
     );
     
+    /**
+     * @deprecated Since guava:21.0 user {@link ImmutableSortedSet#toImmutableSortedSet(Comparator)}
+     */
+    @Deprecated
     static <T extends Comparable<? super T>> Collector<T, ?, ImmutableSortedSet<T>> toImmutableSortedSet() {
         return (Collector) IMMUTABLE_SORTED_SET_COLLECTOR;
     }
     
+    @Deprecated
     Collector<Comparable, TreeSet, ImmutableSortedSet> IMMUTABLE_SORTED_SET_COLLECTOR = Collector.of(
         TreeSet::new,
         TreeSet::add,
